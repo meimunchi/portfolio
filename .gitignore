@@ -426,3 +426,10 @@ FodyWeavers.xsd
 
 # Official VS Code C# Dev Kit Extension exclusion
 #*.lscache
+
+# Frontend build artifacts
+dist/
+dist-ssr/
+.vite/
+*.local
+*.tsbuildinfo
