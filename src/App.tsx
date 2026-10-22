@@ -51,12 +51,12 @@ export type HeroSlide = {
 }
 
 export const heroSlides: HeroSlide[] = [
-  { src: "/images/heroSlides/panda_pg1.PNG", alt: "Panda and Lion", fit: "contain" },
-  { src: "/images/heroSlides/panda_pg2.PNG", alt: "Panda and Lion", fit: "contain" },
-  { src: "/images/heroSlides/panda_shocked.PNG", alt: "Panda and Lion", fit: "contain" },
-  // { src: "/images/heroSlides/panda_uneasy.PNG", alt: "Panda and Lion", fit: "contain" },
-  // { src: "/images/heroSlides/panda_walk_classroom.PNG", alt: "Panda and Lion", fit: "contain" },
-  { src: "/images/heroSlides/panda_dancing.PNG", alt: "Panda and Lion", fit: "contain" },
+  { src: "/images/heroSlides/panda_pg1.webp", alt: "Panda and Lion", fit: "contain" },
+  { src: "/images/heroSlides/panda_pg2.webp", alt: "Panda and Lion", fit: "contain" },
+  { src: "/images/heroSlides/panda_shocked.webp", alt: "Panda and Lion", fit: "contain" },
+  // { src: "/images/heroSlides/panda_uneasy.webp", alt: "Panda and Lion", fit: "contain" },
+  // { src: "/images/heroSlides/panda_walk_classroom.webp", alt: "Panda and Lion", fit: "contain" },
+  { src: "/images/heroSlides/panda_dancing.webp", alt: "Panda and Lion", fit: "contain" },
 ]
 
 export const projects: Project[] = [
@@ -66,13 +66,33 @@ export const projects: Project[] = [
     year: "May 2026",
     medium: "Silent one-shot manga",
     cardMeta: "Silent one-shot manga: May 2026",
-    description: "A story about a girl's first day at school.",
+    description: "A story about a girl's first day at school. This was my second ever manga. It was created originally to submit in Silent Manga Audition 24 \"Letters\". For this manga, I wanted to focus on the characters' expressions and body language to show their personalities.",
     artworks: [
       {
-        src: "/images/heroSlides/panda_pg1.PNG", alt: "Panda and Lion",
+        src: "/images/heroSlides/panda_pg1.webp", alt: "Panda and Lion",
         caption:
-          "Finished first page - inked and rendered (on Clip Studio Paint)",
-      }
+          "Finished first page - inked and rendered (on Clip Studio Paint). On the first page, I wanted to give a peek into the main character's boisterous and outgoing personality, without having to show her face. Her body language conveys her excitement.",
+      },
+      {
+        src: "/images/panda_and_lion_additional/character_designs/girl_2.webp", alt: "girl2characterdesign",
+        caption: "In the initial character designs, I created a girl who is very expressive. She's a very open book."
+      },
+      {
+        src: "/images/panda_and_lion_additional/character_designs/girl_1.webp", alt: "girl1characterdesign",
+        caption: "Though she is usually cheerful, I also explored expressions of worry and sadness."
+      },
+      {
+        src: "/images/panda_and_lion_additional/storyboard.webp", alt: "storyboard",
+        caption: "Afterwards, I started with storyboarding, trying to focus on clear and easily followable panel structure."
+      },
+      {
+        src: "/images/panda_and_lion_additional/sketches/sketch_pg1.webp", alt: "sketch1",
+        caption: "I grew up a traditional artist, so I feel like drawing on pencil and paper gives me the best results. Because of this, I started with sketches on paper, then scanned in the sketches later to do inking and rendering on Clip Studio Paint. These are rough sketches of the first page."
+      },
+      {
+        src: "/images/panda_and_lion_additional/clip_studio_finals.webp", alt: "storyboard",
+        caption: "This project took me two weeks. I had originally only planned to submit one entry (\"The Mailman\") to SMA 24. However, I finished early and wanted to push myself to create something more challenging. It was definitely a learning curve allocating enough time for all the individual steps in the process, and nothing's more fun (and relieving) than seeing the end product."
+      },
     ],
   },
   // {
