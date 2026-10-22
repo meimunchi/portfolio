@@ -12,6 +12,8 @@ export type Project = {
   year: string
   medium: string
   cardMeta?: string
+  cardFit?: "contain" | "cover"
+  cardAspectRatio?: string
   description: string
   viewerTitle?: string
   viewerMedium?: string
@@ -49,6 +51,8 @@ export const heroSlides: HeroSlide[] = [
   // { src: "/images/heroSlides/panda_uneasy.webp", alt: "Panda and Lion", fit: "contain" },
   // { src: "/images/heroSlides/panda_walk_classroom.webp", alt: "Panda and Lion", fit: "contain" },
   { src: "/images/heroSlides/panda_dancing.webp", alt: "Panda and Lion", project: "Panda and Lion", fit: "contain" },
+  { src: "/images/illustrations/sleep.webp", alt: "Journey: Sleep", project: "Journey", fit: "contain" },
+  { src: "/images/illustrations/chess.webp", alt: "Journey: Chess", project: "Journey", fit: "contain" },
 ]
 
 export const projects: Project[] = [
@@ -82,7 +86,7 @@ export const projects: Project[] = [
       },
       {
         src: "/images/panda_and_lion_additional/character_designs/girl_2.webp", alt: "girl2characterdesign",
-        caption: "In the initial character designs, I created a girl who is very expressive. She's a very open book."
+        caption: "In the initial character designs, I created a girl who is very expressive. She's an open book."
       },
       {
         src: "/images/panda_and_lion_additional/character_designs/girl_1.webp", alt: "girl1characterdesign",
@@ -102,66 +106,42 @@ export const projects: Project[] = [
       },
     ],
   },
-  // {
-  //   slug: "the-mailman",
-  //   title: "The Mailman",
-  //   year: "March 2026",
-  //   medium: "Silent one-shot manga",
-  //   cardMeta: "Silent one-shot manga: March 2026",
-  //   description: "A story about a mailman...and a monster...",
-  //   artworks: [
-  //     {
-  //       src: images[3],
-  //       alt: "Warm geometric abstract painting",
-  //       caption:
-  //         "Built from a small plein-air color sketch, then expanded intuitively in the studio.",
-  //     },
-  //     {
-  //       src: images[4],
-  //       alt: "White and red abstract painting",
-  //       caption:
-  //         "Raw linen remains visible between forms, allowing the painting to breathe.",
-  //     },
-  //     {
-  //       src: images[5],
-  //       alt: "Yellow, green and white abstract painting",
-  //       caption:
-  //         "A brighter study made from memory rather than direct observation.",
-  //     },
-  //   ],
-  // },
-  // {
-  //   slug: "notes-on-distance",
-  //   title: "Notes on Distance",
-  //   viewerTitle: "Journey",
-  //   year: "2023",
-  //   medium: "Mixed media on paper",
-  //   viewerMedium: "Mixed media on paper (acrylic paint, colored pencil)",
-  //   description:
-  //     "Small, immediate works made while moving between places. Each one holds a fragment of landscape without describing it literally.",
-  //   viewerDescription:
-  //     "A collection of acrylic and colored pencil paintings capturing the journey of a girl through a fantastical world",
-  //   artworks: [
-  //     {
-  //       src: images[6],
-  //       alt: "Blue and yellow abstract painting",
-  //       caption:
-  //         "Oil stick and graphite create a compact map of remembered shapes.",
-  //     },
-  //     {
-  //       src: images[7],
-  //       alt: "Yellow, red, green and black abstract painting",
-  //       caption:
-  //         "A fast composition made in one sitting, preserving every revision.",
-  //     },
-  //     {
-  //       src: images[8],
-  //       alt: "Blue, yellow and red abstract painting",
-  //       caption:
-  //         "The closing piece combines marks collected across the entire series.",
-  //     },
-  //   ],
-  // },
+  {
+    slug: "journey-illustrations",
+    title: "Journey",
+    year: "2025",
+    medium: "Mixed media on paper (acrylic paint, colored pencil)",
+    cardMeta: "Mixed media: 2025",
+    cardFit: "contain",
+    description: "A collection of acrylic and colored pencil paintings capturing the journey of a girl through a fantastical world.",
+    artworks: [
+      {
+        src: "/images/illustrations/sleep.webp", alt: "Journey illustration",
+        caption:
+          "Sleep illustration from the Journey series. We are introduced to a girl who is sleeping peacefully, observed by a strange creature.",
+      },
+      {
+        src: "/images/illustrations/travel.webp", alt: "Journey illustration",
+        caption:
+          "Travel illustration from the Journey series. The creature and the girl travel.",
+      },
+      {
+        src: "/images/illustrations/pufferfish_1.webp", alt: "Journey illustration",
+        caption:
+          "The girl finds a pufferfish and reaches towards it. What does she want with it?",
+      },
+      {
+        src: "/images/illustrations/pufferfish_2.webp", alt: "Journey illustration",
+        caption:
+          "The creature helps the girl capture the pufferfish.",
+      },
+      {
+        src: "/images/illustrations/chess.webp", alt: "Journey illustration",
+        caption:
+          "In bargain for its freedom, the pufferfish challenges the girl to a game of chess!",
+      },
+    ]
+  },
 ]
 
 function ProjectViewer({
@@ -290,7 +270,12 @@ export default function App() {
     <main>
       <header>
         <a className="wordmark" href="#top">
-          mei.munchii
+          <span>mei.munchii</span>
+          <img
+            src={resolveAsset("/images/logo.webp")}
+            alt="mei.munchii logo"
+            className="wordmark-logo"
+          />
         </a>
         <nav aria-label="Main navigation">
           <a href="#work">Work</a>
@@ -374,8 +359,13 @@ export default function App() {
               }}
               key={project.slug}
             >
-              <div className="project-image">
-                <img src={resolveAsset(project.artworks[0].src)} alt={project.title} />
+              <div className={`project-image ${project.cardFit === "contain" ? "is-contain" : ""}`}>
+                <img
+                  src={resolveAsset(project.artworks[0].src)}
+                  alt={project.title}
+                  className={`project-image-img ${project.cardFit === "contain" ? "fit-contain" : "fit-cover"}`}
+                  style={project.cardAspectRatio ? { aspectRatio: project.cardAspectRatio } : undefined}
+                />
                 <span className="project-number">
                   {String(index + 1).padStart(2, "0")}
                 </span>
