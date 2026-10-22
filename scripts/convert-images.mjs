@@ -21,6 +21,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 
+// Disable Sharp file caching so Windows does not lock files during unlink
+sharp.cache(false);
+
 const SUPPORTED_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.tiff', '.tif', '.bmp']);
 
 function printHelp() {
@@ -135,13 +138,14 @@ function formatBytes(bytes) {
 
 async function convertImage(filePath, { maxSize, quality, keepOriginal }) {
   const originalStat = fs.statSync(filePath);
-  const metadata = await sharp(filePath).metadata();
+  const inputBuffer = fs.readFileSync(filePath);
+  const metadata = await sharp(inputBuffer).metadata();
 
   const parsed = path.parse(filePath);
   const outputPath = path.join(parsed.dir, `${parsed.name}.webp`);
 
   // Resize so largest dimension doesn't exceed maxSize (maintains aspect ratio, never enlarges)
-  await sharp(filePath)
+  await sharp(inputBuffer)
     .resize({
       width: maxSize,
       height: maxSize,
