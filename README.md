@@ -55,8 +55,38 @@ npm run preview
 └── package.json
 ```
 
+## Adding & Optimizing Artwork
+
+To protect your original art from high-resolution theft/unauthorized printing and keep the website loading fast, convert your raw exports (PNG/JPEG) into optimized **WebP** format using the built-in helper script.
+
+### Image Optimization Helper
+
+You can convert an entire folder (including all subfolders) or specific image files:
+
+```bash
+# Convert an entire folder and all its subfolders recursively:
+npm run convert-images -- public/images/panda_and_lion_additional
+
+# Convert specific individual image files:
+npm run convert-images -- public/images/art1.png public/images/art2.jpeg
+
+# Custom max dimension (default: 1200px) and quality (default: 80%):
+npm run convert-images -- public/images/heroSlides --max-size 1400 --quality 85
+
+# Keep the original files alongside the new .webp files:
+npm run convert-images -- public/images/sketches --keep-original
+```
+
+#### What the helper does:
+1. **Resolution Throttling (Art Protection):** Downscales images so their longest edge does not exceed 1200px (customizable with `--max-size`). Images already smaller than this are never upscaled. This ensures artworks look crisp on Retina and 4K displays while preventing high-resolution physical printing.
+2. **WebP Compression:** Compresses images using high-efficiency WebP (default quality 80%), reducing file size by 85–95% without visible visual loss.
+3. **Replaces Originals:** Automatically deletes the heavy original files after successful conversion (unless `--keep-original` is passed).
+
+---
+
 ## Adding Your Own Artwork
 
 To update or add your artworks:
-1. Place image files in `public/images/` or import them in `src/App.tsx`.
-2. Update the `projects` array in `src/App.tsx` with your project titles, descriptions, year, medium, and artwork captions.
+1. Place image files in `public/images/`.
+2. Run `npm run convert-images -- public/images/<folder_name>` to optimize them.
+3. Update the `projects` or `heroSlides` arrays in `src/App.tsx` with your image paths (using `.webp`), titles, descriptions, year, medium, and artwork captions.
