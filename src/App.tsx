@@ -32,18 +32,6 @@ export const resolveAsset = (src: string) => {
   return `${base}${cleanPath}`
 }
 
-const images = [
-  "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?auto=format&fit=crop&w=1600&q=85",
-  "https://images.unsplash.com/photo-1618331833071-ce81bd50d300?auto=format&fit=crop&w=1600&q=85",
-  "https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=1600&q=85",
-  "https://images.unsplash.com/photo-1533208087231-c3618eab623c?auto=format&fit=crop&w=1600&q=85",
-  "https://images.unsplash.com/photo-1533157950006-c38844053d55?auto=format&fit=crop&w=1600&q=85",
-  "https://images.unsplash.com/photo-1618331835717-801e976710b2?auto=format&fit=crop&w=1600&q=85",
-  "https://images.unsplash.com/photo-1552312097-8ef75595e2a2?auto=format&fit=crop&w=1600&q=85",
-  "https://images.unsplash.com/photo-1532640331846-d2da5987c3ee?auto=format&fit=crop&w=1600&q=85",
-  "https://images.unsplash.com/photo-1599753894977-bc6c162417e6?auto=format&fit=crop&w=1600&q=85",
-]
-
 export type HeroSlide = {
   src: string
   alt: string
@@ -53,6 +41,9 @@ export type HeroSlide = {
 export const heroSlides: HeroSlide[] = [
   { src: "/images/heroSlides/panda_pg1.webp", alt: "Panda and Lion", fit: "contain" },
   { src: "/images/heroSlides/panda_pg2.webp", alt: "Panda and Lion", fit: "contain" },
+  { src: "/images/mailman/finished_pages/edge_of_cliff.webp", alt: "The Mailman", fit: "contain" },
+  { src: "/images/mailman/finished_pages/run_up_hill.webp", alt: "The Mailman", fit: "contain" },
+  { src: "/images/mailman/finished_pages/pg16.webp", alt: "The Mailman", fit: "contain" },
   { src: "/images/heroSlides/panda_shocked.webp", alt: "Panda and Lion", fit: "contain" },
   // { src: "/images/heroSlides/panda_uneasy.webp", alt: "Panda and Lion", fit: "contain" },
   // { src: "/images/heroSlides/panda_walk_classroom.webp", alt: "Panda and Lion", fit: "contain" },
@@ -253,13 +244,14 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
-    const timer = window.setInterval(
-      () => setHeroSlide((current) => (current + 1) % heroSlides.length),
-      5000,
-    )
-    return () => window.clearInterval(timer)
-  }, [])
+    if (selected) return
+
+    const timer = window.setTimeout(() => {
+      setHeroSlide((current) => (current + 1) % heroSlides.length)
+    }, 10000)
+
+    return () => window.clearTimeout(timer)
+  }, [heroSlide, selected])
 
   const openProject = (project: Project) => {
     window.location.hash = `/projects/${project.slug}`
@@ -324,6 +316,9 @@ export default function App() {
             >
               →
             </button>
+          </div>
+          <div className="hero-progress-track" aria-hidden="true">
+            {!selected && <div key={heroSlide} className="hero-progress-bar" />}
           </div>
         </div>
       </section>
