@@ -35,22 +35,38 @@ export const resolveAsset = (src: string) => {
 export type HeroSlide = {
   src: string
   alt: string
+  project?: string
   fit?: "contain" | "cover"
 }
 
 export const heroSlides: HeroSlide[] = [
-  { src: "/images/heroSlides/panda_pg1.webp", alt: "Panda and Lion", fit: "contain" },
-  { src: "/images/heroSlides/panda_pg2.webp", alt: "Panda and Lion", fit: "contain" },
-  { src: "/images/mailman/finished_pages/edge_of_cliff.webp", alt: "The Mailman", fit: "contain" },
-  { src: "/images/mailman/finished_pages/run_up_hill.webp", alt: "The Mailman", fit: "contain" },
-  { src: "/images/mailman/finished_pages/pg16.webp", alt: "The Mailman", fit: "contain" },
-  { src: "/images/heroSlides/panda_shocked.webp", alt: "Panda and Lion", fit: "contain" },
+  { src: "/images/heroSlides/panda_pg1.webp", alt: "Panda and Lion", project: "Panda and Lion", fit: "contain" },
+  { src: "/images/heroSlides/panda_pg2.webp", alt: "Panda and Lion", project: "Panda and Lion", fit: "contain" },
+  { src: "/images/mailman/finished_pages/edge_of_cliff.webp", alt: "The Mailman", project: "The Mailman", fit: "contain" },
+  { src: "/images/mailman/finished_pages/run_up_hill.webp", alt: "The Mailman", project: "The Mailman", fit: "contain" },
+  { src: "/images/mailman/finished_pages/pg16.webp", alt: "The Mailman", project: "The Mailman", fit: "contain" },
+  { src: "/images/heroSlides/panda_shocked.webp", alt: "Panda and Lion", project: "Panda and Lion", fit: "contain" },
   // { src: "/images/heroSlides/panda_uneasy.webp", alt: "Panda and Lion", fit: "contain" },
   // { src: "/images/heroSlides/panda_walk_classroom.webp", alt: "Panda and Lion", fit: "contain" },
-  { src: "/images/heroSlides/panda_dancing.webp", alt: "Panda and Lion", fit: "contain" },
+  { src: "/images/heroSlides/panda_dancing.webp", alt: "Panda and Lion", project: "Panda and Lion", fit: "contain" },
 ]
 
 export const projects: Project[] = [
+  {
+      slug: "the-mailman",
+      title: "The Mailman",
+      year: "March 2026",
+      medium: "Silent one-shot manga",
+      cardMeta: "Silent one-shot manga: March 2026",
+      description: "This is a story about a mailman who really does not like being a mailman. This was my very first manga, and it took me so much time. I had to get used to panelling, storyboarding, inking, and rendering. I'm not sure I did the story complete justice! But I'm still proud for having drawn this, and it was a great learning experience for my future works.",
+      artworks: [
+        {
+          src: "/images/mailman/finished_pages/pg1.webp", alt: "Mailman pg 1",
+          caption:
+            "Finished first page - inked and rendered (on Clip Studio Paint). Fun fact: I rendered this page 3 times because I couldn't get it to have the right look. In the end, I think it turned out ok.",
+        },
+      ]
+  },
   {
     slug: "panda-and-lion",
     title: "Panda and Lion",
@@ -292,9 +308,28 @@ export default function App() {
             alt={heroSlides[heroSlide].alt}
           />
           <p className="hero-label">Manga/comic artist, 2-d illustrator</p>
-          <a className="text-link hero-project-link" href="#work">
-            View Projects <span aria-hidden="true">↓</span>
-          </a>
+          <div className="hero-project-group">
+            <a
+              className="hero-project-tag"
+              href="#work"
+              title={`View ${heroSlides[heroSlide].project ?? heroSlides[heroSlide].alt} project`}
+              onClick={(e) => {
+                const currentProj = heroSlides[heroSlide].project || heroSlides[heroSlide].alt
+                const matching = projects.find(
+                  (p) => p.title.toLowerCase() === currentProj.toLowerCase(),
+                )
+                if (matching) {
+                  e.preventDefault()
+                  openProject(matching)
+                }
+              }}
+            >
+              "{heroSlides[heroSlide].project ?? heroSlides[heroSlide].alt}" Project
+            </a>
+            <a className="text-link hero-project-link" href="#work">
+              View All Projects <span aria-hidden="true">↓</span>
+            </a>
+          </div>
           <div className="slide-controls">
             <button
               onClick={() =>
@@ -325,7 +360,7 @@ export default function App() {
 
       <section className="work" id="work">
         <div className="section-heading">
-          <p className="eyebrow">Selected projects</p>
+          <p className="eyebrow">Projects</p>
           <p>01—03</p>
         </div>
         <div className="projects">

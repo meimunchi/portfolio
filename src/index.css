@@ -132,10 +132,36 @@ footer a:hover {
   letter-spacing: 0.16em;
 }
 
-.hero-project-link {
+.hero-project-group {
   position: absolute;
   left: 28px;
   bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  z-index: 2;
+}
+
+.hero-project-tag {
+  margin: 0;
+  padding: 10px 13px;
+  background: #f1f0ea;
+  color: #191916;
+  font-size: 11px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.hero-project-tag:hover {
+  opacity: 0.82;
+}
+
+.hero-project-link {
   padding: 12px 14px;
   border: 0;
   color: #191916;
@@ -525,9 +551,14 @@ footer div {
     max-width: calc(100% - 32px);
     line-height: 1.35;
   }
-  .hero-project-link {
+  .hero-project-group {
     left: 16px;
     bottom: 18px;
+    gap: 6px;
+  }
+  .hero-project-tag {
+    font-size: 10px;
+    padding: 8px 11px;
   }
   .slide-controls {
     right: 14px;
