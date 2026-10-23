@@ -62,7 +62,7 @@ export const projects: Project[] = [
       year: "March 2026",
       medium: "Silent one-shot manga",
       cardMeta: "Silent one-shot manga: March 2026",
-      description: "This is a story about a mailman who really does not like being a mailman. This was my very first manga, and it took me so much time. I had to get used to panelling, storyboarding, inking, and rendering. I'm not sure I did the story complete justice! But I'm still proud for having drawn this, and it was a great learning experience for my future works.",
+      description: "This is a story about a mailman who really does not like being a mailman. It was created originally to submit in Silent Manga Audition 24 \"Letters\". This was my very first manga, and it took me so much time. I had to get used to panelling, storyboarding, inking, and rendering. I'm not sure I did the story complete justice! But I'm still proud for having drawn this, and it was a great learning experience for my future works.",
       artworks: [
         {
           src: "/images/mailman/finished_pages/pg1.webp", alt: "Mailman pg 1",
@@ -138,7 +138,7 @@ export const projects: Project[] = [
     medium: "Mixed media on paper (acrylic paint, colored pencil)",
     cardMeta: "Mixed media: 2025",
     cardFit: "contain",
-    description: "A collection of acrylic and colored pencil paintings capturing the journey of a girl through a fantastical world.",
+    description: "A collection of acrylic and colored pencil paintings capturing the journey of a girl through a fantastical world. I wanted to take the viewer on a beautiful visual journey that follows this girl as she goes on an adventure.",
     artworks: [
       {
         src: "/images/illustrations/sleep.webp", alt: "Journey illustration",
