@@ -45,6 +45,7 @@ export const heroSlides: HeroSlide[] = [
   { src: "/images/heroSlides/panda_pg1.webp", alt: "Panda and Lion", project: "Panda and Lion", fit: "contain" },
   { src: "/images/heroSlides/panda_pg2.webp", alt: "Panda and Lion", project: "Panda and Lion", fit: "contain" },
   { src: "/images/mailman/finished_pages/edge_of_cliff.webp", alt: "The Mailman", project: "The Mailman", fit: "contain" },
+  { src: "/images/illustrations/chess.webp", alt: "Journey: Chess", project: "Journey", fit: "contain" },
   { src: "/images/mailman/finished_pages/run_up_hill.webp", alt: "The Mailman", project: "The Mailman", fit: "contain" },
   { src: "/images/mailman/finished_pages/pg16.webp", alt: "The Mailman", project: "The Mailman", fit: "contain" },
   { src: "/images/heroSlides/panda_shocked.webp", alt: "Panda and Lion", project: "Panda and Lion", fit: "contain" },
@@ -52,7 +53,6 @@ export const heroSlides: HeroSlide[] = [
   // { src: "/images/heroSlides/panda_walk_classroom.webp", alt: "Panda and Lion", fit: "contain" },
   { src: "/images/heroSlides/panda_dancing.webp", alt: "Panda and Lion", project: "Panda and Lion", fit: "contain" },
   { src: "/images/illustrations/sleep.webp", alt: "Journey: Sleep", project: "Journey", fit: "contain" },
-  { src: "/images/illustrations/chess.webp", alt: "Journey: Chess", project: "Journey", fit: "contain" },
 ]
 
 export const projects: Project[] = [
@@ -69,6 +69,31 @@ export const projects: Project[] = [
           caption:
             "Finished first page - inked and rendered (on Clip Studio Paint). Fun fact: I rendered this page 3 times because I couldn't get it to have the right look. In the end, I think it turned out ok.",
         },
+        {
+          src: "/images/mailman/sketches/Mailman-pg7-8-notes_001.webp", alt: "Mailman running",
+          caption: "Since this was my first manga, I was still trying to figure out my process. Directly jumping into storyboarding with panels intimidated me. To get over that, I started with notes. These covered 1. What will happen on these 2 pages? and 2. What sort of panels could I have to show that? This gave me an arsenal of panels that I could then piece together."
+        },
+        {
+          src: "/images/mailman/sketches/Mailman-running-initial-sketch_001.webp", alt: "Mailman running",
+          caption: "I ran through many drafts with this project, with a significant amount of revision. For example, this was one of the initial storyboard sketches for a scene in which the main character runs up the mountain. After having this revision peer reviewed, I realized this scene was way too long (he runs for an entire page!) To fit in other story elements that were more important, I ended up cutting the scene (see below)."
+        },
+        {
+          src: "/images/mailman/sketches/Mailman-running-sketch-ink_001.webp", alt: "Mailman running",
+          caption: "In this rough sketched and partially inked version, I condensed the two pages down into one, while still capturing the intial feeling of urgency and tiredness I wanted to convey."
+        },
+        {
+          src: "/images/mailman/finished_pages/run_up_hill.webp", alt: "Mailman running",
+          caption: "After scanning the above page, I finished rendering and touch ups on Clip Studio paint, and this was the final page."
+        },
+        {
+          src: "/images/mailman/sketches/Mailman-reveal-sketch_001.webp", alt: "Mailman opening box",
+          caption: "One thing I learned was to give certain parts of the page more focus than others, depending on what I found to be more important. For this page, I spent a lot more time on the panel in which the main character gets flung away from the mailbox with a bang, as well as his scared expression afterwards. "
+        },
+        {
+          src: "/images/mailman/finished_pages/monster_reveal.webp", alt: "Mailman running",
+          caption: "This project spanned several months of work (though some of that was spent ramping up on processes and technology). Looking back, it was a touch but fulfilling time. I can definitely see many flaws and things I want to improve in, but I'll leave that for my future works!"
+        },
+
       ]
   },
   {
@@ -279,8 +304,7 @@ export default function App() {
         </a>
         <nav aria-label="Main navigation">
           <a href="#work">Work</a>
-          <a href="#about">About</a>
-          <a href="mailto:victoriamsunny@gmail.com">Contact</a>
+          <a href="#contact">Contact</a>
         </nav>
       </header>
 
@@ -390,7 +414,7 @@ export default function App() {
         </div>
       </section>
 
-      <section className="about" id="about">
+      <section className="contact" id="contact">
         <p className="eyebrow">Contact me</p>
         <p className="contact-statement">
           For commissions, inquiries, questions, or if you want to chat, send me an email!

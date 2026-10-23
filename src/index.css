@@ -382,7 +382,7 @@ footer a:hover {
   opacity: 0.65;
 }
 
-.about {
+.contact {
   padding: 120px 3.5vw;
   display: grid;
   grid-template-columns: 2fr 8fr 2fr;
@@ -611,7 +611,7 @@ footer div {
   .project-card:nth-child(n) .project-image img {
     aspect-ratio: 4 / 4.5;
   }
-  .about {
+  .contact {
     padding: 80px 20px;
     display: block;
   }
