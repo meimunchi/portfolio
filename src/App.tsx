@@ -169,6 +169,28 @@ export const projects: Project[] = [
   },
 ]
 
+function InstagramIcon({ className = "nav-instagram-icon" }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  )
+}
+
 function ProjectViewer({
   project,
   onClose,
@@ -305,6 +327,15 @@ export default function App() {
         <nav aria-label="Main navigation">
           <a href="#work">Work</a>
           <a href="#contact">Contact</a>
+          <a
+            href="https://www.instagram.com/mei.munchii?evlk=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram"
+            className="nav-instagram"
+          >
+            <InstagramIcon />
+          </a>
         </nav>
       </header>
 
@@ -429,7 +460,7 @@ export default function App() {
       <footer>
         <p>© 2026 mei.munchii</p>
         <div>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer">
+          <a href="https://www.instagram.com/mei.munchii?evlk=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr" target="_blank" rel="noreferrer">
             Instagram
           </a>
           <a href="#top">Back to top ↑</a>

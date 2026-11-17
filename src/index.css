@@ -77,10 +77,30 @@ header {
 
 nav {
   display: flex;
+  align-items: center;
   gap: 34px;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
+}
+
+.nav-instagram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  line-height: 1;
+}
+
+.nav-instagram-icon {
+  width: 19px;
+  height: 19px;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.nav-instagram:hover .nav-instagram-icon {
+  transform: scale(1.1);
 }
 
 nav a,
