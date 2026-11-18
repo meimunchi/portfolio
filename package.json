@@ -4,12 +4,15 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview",
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
     "convert-images": "node scripts/convert-images.mjs"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@astrojs/react": "^7.1.9",
+    "astro": "^7.4.12",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

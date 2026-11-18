@@ -1,14 +1,16 @@
 # mei.munchii — Artist Portfolio
 
-A minimalist, editorial portfolio website showcasing manga, comics, and 2-D illustration work. Built with React 19, TypeScript, Vite, and Tailwind CSS v4.
+A minimalist, editorial portfolio website showcasing manga, comics, and 2-D illustration work. Built with **Astro JS**, React 19, TypeScript, and Tailwind CSS v4.
 
 ## Features
 
-- **Hero Slideshow**: Dynamic artwork carousel with smooth transitions and manual next/previous navigation.
+- **Hero Gallery & Expanded View**: Responsive multi-column artwork gallery with a full-screen lightbox modal, keyboard navigation (`Escape`, arrow keys), and direct project links.
 - **Projects Grid**: Selected manga and art projects with hover interactions and metadata tags.
-- **Project Detail Modal**: Immersive gallery viewer displaying high-resolution artworks with individual captions, keyboard navigation (`Escape` to close), and route synchronization.
+- **Project Detail Reader Modal**: Immersive gallery viewer displaying high-resolution artworks with individual captions, keyboard navigation (`Escape` to close), and route synchronization (`#/projects/:slug`).
+- **Social Integration**: Direct header and footer links to Instagram and contact email.
+- **Zero Client JS by Default**: Static sections (header, projects, contact, footer) render as lightweight HTML, while interactive modals run as optimized React islands.
 - **Responsive & Accessible**: Optimized for mobile, tablet, and desktop screens with reduced motion support.
-- **Customizable**: Clean data structure in `src/App.tsx` for updating projects, bio, images, and contact links.
+- **Customizable**: Centralized data structure in `src/data/portfolio.ts` for updating gallery items, manga projects, captions, and links.
 
 ## Getting Started
 
@@ -19,17 +21,17 @@ A minimalist, editorial portfolio website showcasing manga, comics, and 2-D illu
 
 ### Development
 
-Run the local development server:
+Run the Astro development server:
 
 ```bash
 npm run dev
 ```
 
-Open your browser at the local URL (typically `http://localhost:5173`).
+Open your browser at the local URL (typically `http://localhost:4321`).
 
-### Production Build
+### Production Build & Type Check
 
-Create an optimized static build in the `dist` folder:
+Type-check and create an optimized static build in the `dist/` directory:
 
 ```bash
 npm run build
@@ -44,14 +46,24 @@ npm run preview
 ## Project Structure
 
 ```
-├── public/              # Static assets (favicon, etc.)
+├── public/                 # Static assets (images, favicon, etc.)
+│   └── images/             # Manga & illustration folders (mailman, heroSlides, etc.)
 ├── src/
-│   ├── App.tsx          # Main portfolio layout, project data, and project viewer
-│   ├── index.css        # Typography, global styles, animations & Tailwind v4
-│   ├── main.tsx         # React root entry point
-│   └── vite-env.d.ts    # Vite TypeScript declarations
-├── index.html           # HTML shell & SEO metadata
-├── vite.config.ts       # Vite & Tailwind configuration
+│   ├── components/         # Astro & React components
+│   │   ├── Header.astro    # Navigation, brand wordmark, logo & Instagram icon
+│   │   ├── HeroGallery.tsx # Hero gallery grid + interactive lightbox modal
+│   │   ├── Projects.astro  # Static projects grid
+│   │   ├── ProjectViewer.tsx # Fullscreen manga/illustration viewer
+│   │   ├── Contact.astro   # Contact statement and email
+│   │   └── Footer.astro    # Copyright, Instagram & back-to-top links
+│   ├── data/
+│   │   └── portfolio.ts    # Centralized portfolio data & TypeScript types
+│   ├── layouts/
+│   │   └── Layout.astro    # Base HTML document shell with fonts & SEO tags
+│   ├── pages/
+│   │   └── index.astro     # Main homepage assembling all components
+│   └── index.css           # Typography, global styles, animations & Tailwind v4
+├── astro.config.mjs        # Astro configuration & React / Tailwind plugins
 └── package.json
 ```
 
@@ -89,4 +101,6 @@ npm run convert-images -- public/images/sketches --keep-original
 To update or add your artworks:
 1. Place image files in `public/images/`.
 2. Run `npm run convert-images -- public/images/<folder_name>` to optimize them.
-3. Update the `projects` or `heroSlides` arrays in `src/App.tsx` with your image paths (using `.webp`), titles, descriptions, year, medium, and artwork captions.
+3. Update `src/data/portfolio.ts`:
+   - Add items to `galleryArtworks` for the top Hero Gallery.
+   - Add or modify projects in the `projects` array with your image paths (using `.webp`), titles, descriptions, year, medium, and artwork captions.

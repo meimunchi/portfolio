@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import HeroGallery from '../components/HeroGallery';
+import Projects from '../components/Projects.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import ProjectViewer from '../components/ProjectViewer';
+---
+
+<Layout title="mei.munchii — Artist Portfolio">
+  <Header />
+  <main>
+    <HeroGallery client:load />
+    <Projects />
+    <Contact />
+    <Footer />
+    <ProjectViewer client:idle />
+  </main>
+</Layout>

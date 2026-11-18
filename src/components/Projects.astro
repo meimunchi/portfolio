@@ -1,0 +1,48 @@
+---
+import { projects, resolveAsset } from '../data/portfolio';
+---
+
+<section class="work" id="work">
+  <div class="section-heading">
+    <p class="eyebrow">Projects</p>
+    <p>01—03</p>
+  </div>
+  <div class="projects">
+    {projects.map((project, index) => (
+      <a
+        class="project-card"
+        href={`#/projects/${project.slug}`}
+      >
+        <div class={`project-image ${project.cardFit === "contain" ? "is-contain" : ""}`}>
+          <img
+            src={resolveAsset(project.artworks[0].src)}
+            alt={project.title}
+            class={`project-image-img ${project.cardFit === "contain" ? "fit-contain" : "fit-cover"}`}
+            style={project.cardAspectRatio ? { aspectRatio: project.cardAspectRatio } : undefined}
+            loading="lazy"
+          />
+          <span class="project-number">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <span class="view-mark" aria-hidden="true">
+            ↗
+          </span>
+        </div>
+        <div class="project-meta">
+          <h2>{project.title}</h2>
+          <p>
+            {project.cardMeta ? (
+              project.cardMeta
+            ) : (
+              <>
+                {project.medium}
+                <br />
+                {project.year}
+              </>
+            )}
+          </p>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
